@@ -1,0 +1,68 @@
+/* DatePicker.module.css */
+.container {
+    position: relative;
+    width: min(400px, 100%);
+    height:100%;
+    user-select: none;
+    overflow: hidden;
+}
+
+.list {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    perspective: 900px;
+    transform-style: preserve-3d;
+}
+
+.item {
+    position: absolute;
+    left: 50%;
+    top: calc(50% - 1.2rem);
+    --rotateX: calc(
+            2deg * var(--rotateDegrees) * calc(var(--item_idx) - var(--currentItem))
+    );
+    transform: rotateX(var(--rotateX)) translateZ(90px) translateX(-50%) scale(var(--scale, 1));
+    --hue: calc(var(--rotateDegrees) * var(--item_idx));
+    display: grid;
+    height: 1.2rem;
+    transition: transform 250ms ease, background-color 250ms ease, opacity 250ms ease;
+    color: #a3a3a3b0;
+    text-align: center;
+}
+
+.active {
+    --lightness: 30%;
+    --scale: 1.1;
+    color: white;
+}
+
+.hidden {
+    display: block;
+    opacity: 0 !important;
+}
+
+.itemContent {
+    display: grid;
+    align-items: center;
+}
+
+.time {
+    text-align: center;
+}
+
+.span {
+    width: 200px;
+    padding-inline-start: 0.5rem;
+}
+
+.border {
+    width: 96%;
+    height: 3em;
+    background-color: #a0a0a0;
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
