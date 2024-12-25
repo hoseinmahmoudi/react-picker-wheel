@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development', // Set to 'development' or 'production'
-    entry: './src/PickerWheel.tsx', // This should match your entry point file
+    mode: 'production', // Set to 'production' for optimized builds
+    entry: './src/index.ts', // Ensure the entry point is correct
     module: {
         rules: [
             {
@@ -12,8 +12,16 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
                 exclude: /node_modules/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                        },
+                    },
+                ],
             },
         ],
     },
@@ -24,5 +32,8 @@ module.exports = {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
         libraryTarget: 'commonjs2',
+    },
+    optimization: {
+        minimize: true,
     },
 };

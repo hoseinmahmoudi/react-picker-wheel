@@ -2,8 +2,11 @@
   "name": "react-picker-wheel",
   "version": "1.0.8",
   "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
-    "build": "tsc && babel src -d dist --extensions \".ts,.tsx\"",
+    "build": "webpack --config webpack.config.js",
     "build:ts": "tsc",
     "prepublishOnly": "npm run build"
   },
@@ -27,13 +30,13 @@
     "webpack-cli": "^5.1.4"
   },
   "peerDependencies": {
-    "react": "^16 || ^17 || ^18 || ^19 ",
-    "react-dom": "^16 || ^17 || ^18 || ^19 "
+    "react": "^16 || ^17 || ^18 || ^19",
+    "react-dom": "^16 || ^17 || ^18 || ^19"
   },
   "dependencies": {
     "@babel/cli": "^7.26.4",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
-    "@jridgewell/gen-mapping": "^0.3.6"
+    "@jridgewell/gen-mapping": "^0.3.8"
   }
 }
